@@ -21,6 +21,13 @@ for(var i = 0; i < numbOfDrums ; i++)
 
 }
 
+document.addEventListener("keydown", function(event){
+        
+    var keyPressed =  event.key;
+    playButton(keyPressed);
+}
+)
+
 
 function playButton (buttonHtml){
    

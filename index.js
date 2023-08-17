@@ -7,32 +7,33 @@ for(var i = 0; i < numbOfDrums ; i++)
 {
     document.querySelectorAll("button")[i].addEventListener("click", function(){
         var buttonHtml = this.innerHTML;
-    playButton(buttonHtml);
+    playSound(buttonHtml);
+    buttonAnimation(buttonHtml);
     }
     )
 
     document.querySelectorAll("button")[i].addEventListener("touchstart", function() {
         event.preventDefault();
         var buttonHtml = this.innerHTML;
-    playButton(buttonHtml);
-
+    playSound(buttonHtml);
+    buttonAnimation(buttonHtml);
     }
     )
 
-}
+    
 
+}
+    
 document.addEventListener("keydown", function(event){
-        
-    var keyPressed =  event.key;
-    playButton(keyPressed);
+    playSound(event.key);
+    buttonAnimation(event.key);
 }
 )
 
-
-function playButton (buttonHtml){
+function playSound (key){
    
     
-switch (buttonHtml) {
+switch (key) {
     case "w":
         var tom1 = new Audio("sounds/tom-1.mp3");
         tom1.play();
@@ -65,4 +66,13 @@ switch (buttonHtml) {
         break;
 }
 
+}
+
+function buttonAnimation(keyPressed){
+   var activeButton = document.querySelector("." + keyPressed);
+   activeButton.classList.add("pressed");
+
+   setTimeout(function(){
+    activeButton.classList.remove("pressed");
+   },150);
 }
